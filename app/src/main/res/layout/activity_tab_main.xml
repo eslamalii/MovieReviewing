@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_Mo"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".TabMain">
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginHorizontal="40dp"
+        android:background="@drawable/tab_bg"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@null"
+        app:tabIndicatorHeight="0dp"
+        app:tabMode="fixed"
+        app:tabRippleColor="@null"
+        app:tabSelectedTextColor="@color/colorTextOn"
+        app:tabTextAppearance="@style/TextSizeTabItem"
+        app:tabTextColor="@color/white"
+        tools:ignore="SpeakableTextPresentCheck">
+
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <!--    <include-->
+    <!--        android:id="@+id/toolBarTabs"-->
+    <!--        layout="@layout/custom_tabs" />-->
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</LinearLayout>

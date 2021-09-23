@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_Mo"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:theme="@style/Theme.MovieApp"
+    tools:context=".fragments.MoviesFrag">
+
+    <include
+        android:id="@+id/progressBarLO"
+        layout="@layout/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <RelativeLayout
+        android:id="@+id/upcomingMoviesLO"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/upcomingMoviesId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/upcoming"
+            android:textColor="@color/txt_color_Mo"
+            android:textSize="@dimen/title_size_Mo"
+            android:textStyle="bold" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_View_Movie"
+            android:layout_width="343dp"
+            android:layout_height="169dp"
+            android:layout_below="@+id/upcomingMoviesId"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            app:cardCornerRadius="15dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/image_view_Mo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/contentDescription"
+                    android:scaleType="centerCrop"
+                    tools:ignore="MissingConstraints" />
+
+                <View
+                    android:id="@+id/view_gradient"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/gradient_drawable" />
+
+                <TextView
+                    android:id="@+id/title_Mo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:padding="16dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_Mo"
+                    android:textStyle="bold"
+                    tools:text="The Suicide Squad" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMovies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_View_Movie"
+            android:layout_marginStart="16dp" />
+    </RelativeLayout>
+
+
+</RelativeLayout>
