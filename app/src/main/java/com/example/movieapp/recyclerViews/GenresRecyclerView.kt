@@ -1,6 +1,5 @@
 package com.example.movieapp.recyclerViews
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,19 +10,20 @@ import com.example.movieapp.model.series.genres.Genres
 import com.example.movieapp.model.series.genres.GenresValues
 
 class GenresRecyclerView(
-    private val genresList: Genres?,
-    private val context: Context
+    private val genresList: Genres?
 ) :
     RecyclerView.Adapter<GenresRecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): GenresRecyclerView.ViewHolder {
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.genres_row, parent, false))
+    ): ViewHolder {
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.genres_row, parent, false)
+        )
     }
 
-    override fun onBindViewHolder(holder: GenresRecyclerView.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val list: GenresValues = genresList!!.genres[position]
         holder.item.text = list.name
     }

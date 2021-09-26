@@ -1,6 +1,5 @@
 package com.example.movieapp.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -56,7 +55,7 @@ class MoviesFrag : Fragment() {
         })
 
         viewModel.genresList.observe(this, {
-            setupRecyclerView(requireContext(), it)
+            setupRecyclerView(it)
         })
 
     }
@@ -78,10 +77,10 @@ class MoviesFrag : Fragment() {
         _binding = null
     }
 
-    private fun setupRecyclerView(context: Context, genres: Genres?) {
+    private fun setupRecyclerView(genres: Genres?) {
         binding.recyclerViewMovies.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        adapter = GenresRecyclerView(genres, context)
+        adapter = GenresRecyclerView(genres)
         binding.recyclerViewMovies.adapter = adapter
     }
 
