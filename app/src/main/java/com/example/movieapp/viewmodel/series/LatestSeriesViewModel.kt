@@ -17,7 +17,7 @@ class LatestSeriesViewModel : ViewModel() {
     val latestSeriesList = MutableLiveData<LatestSeries?>()
     val progressBar = MutableLiveData<Int>()
     val genresList = MutableLiveData<Genres?>()
-    val khod = MutableLiveData<TvShows>()
+    val tvShows = MutableLiveData<TvShows>()
 
     fun fetchLatestSeries() {
         progressBar.value = 8
@@ -59,7 +59,7 @@ class LatestSeriesViewModel : ViewModel() {
             .observeOn(AndroidSchedulers.mainThread())
 
         list.subscribe({
-            khod.value = it
+            tvShows.value = it
         }, {
 
         })

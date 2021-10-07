@@ -24,7 +24,7 @@ class SeriesFrag : Fragment() {
     private lateinit var viewModel: LatestSeriesViewModel
     private var _binding: FragmentSeriesBinding? = null
     private lateinit var adapter: GenresRecyclerView
-    lateinit var ceeeeel: TrendingRecyclerView
+    lateinit var trendingView: TrendingRecyclerView
     lateinit var snap: SnapHelper
 
     private val binding get() = _binding!!
@@ -65,7 +65,7 @@ class SeriesFrag : Fragment() {
 
         })
 
-        viewModel.khod.observe(this, {
+        viewModel.tvShows.observe(this, {
             setupRecyclerView1(it, requireContext())
         })
     }
@@ -95,8 +95,8 @@ class SeriesFrag : Fragment() {
         binding.trendingRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         snap.attachToRecyclerView(binding.trendingRecyclerView)
-        ceeeeel = TrendingRecyclerView(tvShows, context)
-        binding.trendingRecyclerView.adapter = ceeeeel
+        trendingView = TrendingRecyclerView(tvShows, context)
+        binding.trendingRecyclerView.adapter = trendingView
     }
 
 }

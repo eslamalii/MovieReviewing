@@ -81,6 +81,23 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/card_View_Movie"
             android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/trendingNowMovies"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/recyclerViewMovies"
+            android:padding="12dp"
+            android:text="@string/trending_now"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_size_Mo"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/trending_RecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/trendingNowMovies" />
     </RelativeLayout>
 
 

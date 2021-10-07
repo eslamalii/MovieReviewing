@@ -1,5 +1,6 @@
 package com.example.movieapp.data.movies
 
+import com.example.movieapp.model.movies.popularMovies.PopularMovies
 import com.example.movieapp.model.movies.upcomingMovies.UpcomingMovies
 import com.example.movieapp.model.series.genres.Genres
 import com.example.movieapp.util.Constants
@@ -26,4 +27,7 @@ class UpcomingService {
         return api.getGenresList(Constants.API_ID, "en-US")
     }
 
+    fun getPopularMovies(): Observable<PopularMovies> {
+        return api.getPopularMovies(Constants.API_ID, "en-US")
+    }
 }

@@ -24,11 +24,5 @@ class TabMain : AppCompatActivity() {
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = String.format(getString(TAB_TITLES[position]))
         }.attach()
-//        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-//        val viewPager: ViewPager = binding.viewPager
-//        viewPager.adapter = sectionsPagerAdapter
-//        tabs.setupWithViewPager(viewPager)
-
-
     }
 }

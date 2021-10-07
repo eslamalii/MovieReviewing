@@ -1,5 +1,6 @@
 package com.example.movieapp.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,27 +8,35 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSnapHelper
+import androidx.recyclerview.widget.SnapHelper
 import com.bumptech.glide.Glide
 import com.example.movieapp.databinding.FragmentUpcomingMoviesBinding
+import com.example.movieapp.model.movies.popularMovies.PopularMovies
 import com.example.movieapp.model.series.genres.Genres
 import com.example.movieapp.recyclerViews.GenresRecyclerView
-import com.example.movieapp.viewmodel.movies.UpcomingViewModel
+import com.example.movieapp.recyclerViews.TrendingRecyclerViewM
+import com.example.movieapp.viewmodel.movies.MoviesViewModel
 import kotlin.random.Random
 
 
 class MoviesFrag : Fragment() {
 
-    private lateinit var viewModel: UpcomingViewModel
+    private lateinit var viewModel: MoviesViewModel
     private var _binding: FragmentUpcomingMoviesBinding? = null
     lateinit var adapter: GenresRecyclerView
+    lateinit var snap: SnapHelper
+    lateinit var popView: TrendingRecyclerViewM
+
 
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this)[UpcomingViewModel::class.java]
+        viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
         viewModel.fetchUpcomingMovies()
         viewModel.fetchGenresSeries()
+        viewModel.fetchPopularMovies()
 
         viewModel.upComingProgressBar.observe(this, {
             when (it) {
@@ -58,6 +67,10 @@ class MoviesFrag : Fragment() {
             setupRecyclerView(it)
         })
 
+        viewModel.popularList.observe(this, {
+            setupRecyclerView1(it, requireContext())
+        })
+
     }
 
     override fun onCreateView(
@@ -82,6 +95,15 @@ class MoviesFrag : Fragment() {
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adapter = GenresRecyclerView(genres)
         binding.recyclerViewMovies.adapter = adapter
+    }
+
+    private fun setupRecyclerView1(list: PopularMovies, context: Context) {
+        snap = LinearSnapHelper()
+        binding.trendingRecyclerView.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        snap.attachToRecyclerView(binding.trendingRecyclerView)
+        popView = TrendingRecyclerViewM(list, context)
+        binding.trendingRecyclerView.adapter = popView
     }
 
 }
