@@ -60,9 +60,7 @@ class SeriesFrag : Fragment() {
         })
 
         viewModel.genresList.observe(this, {
-
             setupRecyclerView(it)
-
         })
 
         viewModel.tvShows.observe(this, {

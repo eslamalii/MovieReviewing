@@ -18,6 +18,7 @@ class LatestSeriesViewModel : ViewModel() {
     val progressBar = MutableLiveData<Int>()
     val genresList = MutableLiveData<Genres?>()
     val tvShows = MutableLiveData<TvShows>()
+    lateinit var listGenres: Genres
 
     fun fetchLatestSeries() {
         progressBar.value = 8
@@ -46,6 +47,7 @@ class LatestSeriesViewModel : ViewModel() {
         genresObservable.subscribe(
             {
                 genresList.value = it
+                listGenres = it
             }, {
                 Log.i("TAG", "fetchGenresSeries: $it")
             }
@@ -61,7 +63,7 @@ class LatestSeriesViewModel : ViewModel() {
         list.subscribe({
             tvShows.value = it
         }, {
-
+            Log.i("TAG", "fetchGenresSeries: $it")
         })
     }
 }
