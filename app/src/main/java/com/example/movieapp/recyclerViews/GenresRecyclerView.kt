@@ -6,12 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
-import com.example.movieapp.model.series.genres.Genres
 import com.example.movieapp.model.series.genres.GenresValues
-import com.example.movieapp.util.Genre
 
 class GenresRecyclerView(
-    private val genresList: Genres?
+    private val genres: List<GenresValues>
 ) :
     RecyclerView.Adapter<GenresRecyclerView.ViewHolder>() {
 
@@ -25,12 +23,12 @@ class GenresRecyclerView(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val list: GenresValues = genresList!!.genres[position]
-        holder.item.text = list.name
+
+        holder.item.text = genres[position].name
     }
 
     override fun getItemCount(): Int {
-        return genresList!!.genres.size
+        return genres.size
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

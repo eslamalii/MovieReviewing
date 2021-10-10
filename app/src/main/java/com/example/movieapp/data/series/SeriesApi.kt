@@ -15,12 +15,6 @@ interface SeriesApi {
         @Query("language") language: String
     ): Observable<LatestSeries>
 
-    @GET("genre/tv/list")
-    fun getSeriesGenres(
-        @Query("api_key") api: String,
-        @Query("language") language: String
-    ): Observable<Genres>
-
     @GET("discover/tv")
     fun getTvShows(
         @Query("api_key") api: String,

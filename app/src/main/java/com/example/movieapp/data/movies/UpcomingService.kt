@@ -23,10 +23,6 @@ class UpcomingService {
         return api.getUpcomingMovies(Constants.API_ID, "en-US")
     }
 
-    fun getGenresList(): Observable<Genres> {
-        return api.getGenresList(Constants.API_ID, "en-US")
-    }
-
     fun getPopularMovies(): Observable<PopularMovies> {
         return api.getPopularMovies(Constants.API_ID, "en-US")
     }

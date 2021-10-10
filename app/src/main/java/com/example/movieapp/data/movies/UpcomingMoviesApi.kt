@@ -15,12 +15,6 @@ interface UpcomingMoviesApi {
         @Query("language") language: String
     ): Observable<UpcomingMovies>
 
-    @GET("genre/movie/list")
-    fun getGenresList(
-        @Query("api_key") api: String,
-        @Query("language") language: String
-    ): Observable<Genres>
-
     @GET("movie/popular")
     fun getPopularMovies(
         @Query("api_key") api: String,

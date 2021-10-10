@@ -13,7 +13,10 @@ import com.example.movieapp.model.movies.popularMovies.PopularMovies
 import com.example.movieapp.model.movies.popularMovies.Results
 import com.example.movieapp.util.Genre
 
-class TrendingRecyclerViewM(private val cells: PopularMovies, private var context: Context) :
+class TrendingRecyclerViewM(
+    private val cells: PopularMovies,
+    private var context: Context
+) :
     RecyclerView.Adapter<TrendingRecyclerViewM.ViewHolder>() {
 
     override fun onCreateViewHolder(

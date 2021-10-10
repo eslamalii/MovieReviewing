@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.bumptech.glide.Glide
 import com.example.movieapp.databinding.FragmentSeriesBinding
-import com.example.movieapp.model.series.genres.Genres
+import com.example.movieapp.model.series.genres.GenresValues
 import com.example.movieapp.model.series.tvShows.TvShows
 import com.example.movieapp.recyclerViews.GenresRecyclerView
 import com.example.movieapp.recyclerViews.TrendingRecyclerView
@@ -56,12 +56,12 @@ class SeriesFrag : Fragment() {
                 .into(binding.imageViewS)
         })
 
-        viewModel.genresList.observe(this, {
-            setupRecyclerView(it)
-        })
-
         viewModel.tvShows.observe(this, {
             setupRecyclerView1(it, requireContext())
+        })
+
+        viewModel.genres.observe(this, {
+            setupRecyclerView(it)
         })
     }
 
@@ -78,7 +78,7 @@ class SeriesFrag : Fragment() {
         _binding = null
     }
 
-    private fun setupRecyclerView(genres: Genres?) {
+    private fun setupRecyclerView(genres: List<GenresValues>) {
         binding.recyclerViewSeries.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         adapter = GenresRecyclerView(genres)

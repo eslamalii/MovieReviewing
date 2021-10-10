@@ -1,5 +1,7 @@
 package com.example.movieapp.util
 
+import com.example.movieapp.model.series.genres.GenresValues
+
 class Genre {
     companion object {
         private val genreMap = mapOf(
@@ -38,6 +40,14 @@ class Genre {
             genreMap[id].let {
                 return it ?: "Undefined"
             }
+        }
+
+        fun getAllGenre(): MutableList<GenresValues> {
+            val list = mutableListOf<GenresValues>()
+            genreMap.keys.forEach {
+                list.add(element = GenresValues(it, genreMap[it].toString()))
+            }
+            return list
         }
 
     }

@@ -25,10 +25,6 @@ class SeriesService {
         return api.getLatestSeries(Constants.API_ID, "en-US")
     }
 
-    fun getGenresSeries(): Observable<Genres> {
-        return api.getSeriesGenres(Constants.API_ID, "en_US")
-    }
-
     fun getTvShows(): Observable<TvShows> {
         return api.getTvShows(Constants.API_ID, "en_US", "popularity.desc", "America/New_York")
     }
