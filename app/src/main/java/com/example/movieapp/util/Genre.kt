@@ -2,8 +2,7 @@ package com.example.movieapp.util
 
 class Genre {
     companion object {
-
-        private val genreMap = mapOf<Int, String>(
+        private val genreMap = mapOf(
             28 to "Action",
             12 to "Adventure",
             16 to "Animation",
@@ -40,5 +39,6 @@ class Genre {
                 return it ?: "Undefined"
             }
         }
+
     }
 }

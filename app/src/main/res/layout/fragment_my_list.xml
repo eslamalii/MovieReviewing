@@ -6,12 +6,5 @@
     android:background="@color/background_Mo"
     tools:context=".fragments.MyListFrag">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="40dp"
-        android:textColor="@color/white"
-        android:text="6666666666666666666666666666666666666666" />
 
 </FrameLayout>

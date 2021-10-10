@@ -27,7 +27,7 @@ class TrendingRecyclerView(private val cells: TvShows, private var context: Cont
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val cell: Results = cells.results[position]
-        var s = Genre.getGenre(cell.genreIds)
+        val s = Genre.getGenre(cell.genreIds)
         holder.genre.text = s.split(",")[0]
         holder.rate.text = cell.voteAverage.toString()
 

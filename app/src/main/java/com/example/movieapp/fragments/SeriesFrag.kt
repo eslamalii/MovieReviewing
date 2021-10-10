@@ -32,9 +32,6 @@ class SeriesFrag : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[LatestSeriesViewModel::class.java]
-        viewModel.fetchLatestSeries()
-        viewModel.fetchGenresSeries()
-        viewModel.fetchTvShows()
 
         viewModel.progressBar.observe(this, {
             when (it) {

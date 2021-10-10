@@ -18,9 +18,14 @@ class LatestSeriesViewModel : ViewModel() {
     val progressBar = MutableLiveData<Int>()
     val genresList = MutableLiveData<Genres?>()
     val tvShows = MutableLiveData<TvShows>()
-    lateinit var listGenres: Genres
 
-    fun fetchLatestSeries() {
+    init {
+        fetchLatestSeries()
+        fetchTvShows()
+        fetchGenresSeries()
+    }
+
+    private fun fetchLatestSeries() {
         progressBar.value = 8
         val latestSeries: Observable<LatestSeries> = latestSeriesService.getLatestSeries()
             .subscribeOn(Schedulers.io())
@@ -39,7 +44,7 @@ class LatestSeriesViewModel : ViewModel() {
 
     }
 
-    fun fetchGenresSeries() {
+    private fun fetchGenresSeries() {
         val genresObservable: Observable<Genres> = latestSeriesService.getGenresSeries()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -47,14 +52,13 @@ class LatestSeriesViewModel : ViewModel() {
         genresObservable.subscribe(
             {
                 genresList.value = it
-                listGenres = it
             }, {
                 Log.i("TAG", "fetchGenresSeries: $it")
             }
         )
     }
 
-    fun fetchTvShows() {
+    private fun fetchTvShows() {
 
         val list: Observable<TvShows> = latestSeriesService.getTvShows()
             .subscribeOn(Schedulers.io())

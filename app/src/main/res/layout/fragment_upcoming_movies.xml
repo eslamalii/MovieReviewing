@@ -26,9 +26,9 @@
             android:id="@+id/upcomingMoviesId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:padding="12dp"
             android:text="@string/upcoming"
-            android:textColor="@color/txt_color_Mo"
+            android:textColor="@color/white"
             android:textSize="@dimen/title_size_Mo"
             android:textStyle="bold" />
 
