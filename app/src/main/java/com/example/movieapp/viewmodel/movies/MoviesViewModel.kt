@@ -19,7 +19,12 @@ class MoviesViewModel : ViewModel() {
     val genresList = MutableLiveData<Genres?>()
     val popularList = MutableLiveData<PopularMovies>()
 
-    fun fetchUpcomingMovies() {
+    init {
+        fetchPopularMovies()
+        fetchGenresSeries()
+        fetchUpcomingMovies()
+    }
+    private fun fetchUpcomingMovies() {
         upComingProgressBar.value = View.GONE
         val upcomingMovies: Observable<UpcomingMovies> = upcomingMoviesService.getUpcomingMovies()
             .subscribeOn(Schedulers.io())
@@ -35,7 +40,7 @@ class MoviesViewModel : ViewModel() {
         )
     }
 
-    fun fetchGenresSeries() {
+    private fun fetchGenresSeries() {
         val genresObservable: Observable<Genres> = upcomingMoviesService.getGenresList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -49,7 +54,7 @@ class MoviesViewModel : ViewModel() {
         )
     }
 
-    fun fetchPopularMovies() {
+    private fun fetchPopularMovies() {
         val popularMovies: Observable<PopularMovies> = upcomingMoviesService.getPopularMovies()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

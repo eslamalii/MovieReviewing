@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.movieapp.R
 import com.example.movieapp.model.series.genres.Genres
 import com.example.movieapp.model.series.genres.GenresValues
+import com.example.movieapp.util.Genre
 
 class GenresRecyclerView(
     private val genresList: Genres?

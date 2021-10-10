@@ -3,16 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:paddingHorizontal="32dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:background="@android:color/transparent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingHorizontal="32dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_View_MovieHol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginBottom="16dp"
         app:cardCornerRadius="5dp">
 
@@ -21,14 +22,14 @@
             android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:background="@drawable/shape_rounded"
-            android:src="@drawable/the_suicide_squad_trailer_poster_1262010"
             tools:ignore="ContentDescription" />
 
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -37,11 +38,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="4dp"
+            android:autoSizeMaxTextSize="20sp"
+            android:autoSizeMinTextSize="5sp"
+            android:autoSizeTextType="uniform"
             android:background="@drawable/gradient_txt"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
             android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:targetApi="o" />
 
         <LinearLayout
             android:layout_width="wrap_content"

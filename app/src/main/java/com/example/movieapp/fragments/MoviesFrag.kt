@@ -34,9 +34,6 @@ class MoviesFrag : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this)[MoviesViewModel::class.java]
-        viewModel.fetchUpcomingMovies()
-        viewModel.fetchGenresSeries()
-        viewModel.fetchPopularMovies()
 
         viewModel.upComingProgressBar.observe(this, {
             when (it) {
