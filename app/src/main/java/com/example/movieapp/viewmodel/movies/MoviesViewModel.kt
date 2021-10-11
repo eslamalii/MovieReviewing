@@ -7,9 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.example.movieapp.data.movies.UpcomingService
 import com.example.movieapp.model.movies.popularMovies.PopularMovies
 import com.example.movieapp.model.movies.upcomingMovies.UpcomingMovies
-import com.example.movieapp.model.series.genres.Genres
 import com.example.movieapp.model.series.genres.GenresValues
-import com.example.movieapp.util.Genre
+import com.example.movieapp.util.GenreMovies
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -26,6 +25,7 @@ class MoviesViewModel : ViewModel() {
         fetchUpcomingMovies()
         fetchGenres()
     }
+
     private fun fetchUpcomingMovies() {
         upComingProgressBar.value = View.GONE
         val upcomingMovies: Observable<UpcomingMovies> = upcomingMoviesService.getUpcomingMovies()
@@ -56,7 +56,7 @@ class MoviesViewModel : ViewModel() {
         )
     }
 
-    private fun fetchGenres(){
-        genres.value = Genre.getAllGenre()
+    private fun fetchGenres() {
+        genres.value = GenreMovies.getAllGenre()
     }
 }

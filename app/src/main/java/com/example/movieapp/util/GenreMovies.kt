@@ -2,7 +2,7 @@ package com.example.movieapp.util
 
 import com.example.movieapp.model.series.genres.GenresValues
 
-class Genre {
+class GenreMovies {
     companion object {
         private val genreMap = mapOf(
             28 to "Action",

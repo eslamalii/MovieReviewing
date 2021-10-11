@@ -4,11 +4,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.movieapp.data.series.SeriesService
-import com.example.movieapp.model.series.genres.Genres
 import com.example.movieapp.model.series.genres.GenresValues
 import com.example.movieapp.model.series.latestSeries.LatestSeries
 import com.example.movieapp.model.series.tvShows.TvShows
-import com.example.movieapp.util.Genre
+import com.example.movieapp.util.GenreSeries
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -59,7 +58,7 @@ class LatestSeriesViewModel : ViewModel() {
         })
     }
 
-    private fun fetchGenres(){
-        genres.value = Genre.getAllGenre()
+    private fun fetchGenres() {
+        genres.value = GenreSeries.getAllGenre()
     }
 }

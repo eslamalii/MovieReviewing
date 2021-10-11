@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.example.movieapp.R
 import com.example.movieapp.model.series.tvShows.Results
 import com.example.movieapp.model.series.tvShows.TvShows
-import com.example.movieapp.util.Genre
+import com.example.movieapp.util.GenreSeries
 
 class TrendingRecyclerView(private val cells: TvShows, private var context: Context) :
     RecyclerView.Adapter<TrendingRecyclerView.ViewHolder>() {
@@ -27,7 +27,7 @@ class TrendingRecyclerView(private val cells: TvShows, private var context: Cont
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val cell: Results = cells.results[position]
-        val s = Genre.getGenre(cell.genreIds)
+        val s = GenreSeries.getGenre(cell.genreIds)
         holder.genre.text = s.split(",")[0]
         holder.rate.text = cell.voteAverage.toString()
 
