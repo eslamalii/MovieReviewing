@@ -1,7 +1,6 @@
 package com.example.movieapp.viewmodel.movies
 
 import android.util.Log
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.movieapp.data.movies.UpcomingService
@@ -16,18 +15,18 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class MoviesViewModel : ViewModel() {
     private val upcomingMoviesService = UpcomingService()
     val upcomingMoviesList = MutableLiveData<UpcomingMovies?>()
-    val upComingProgressBar = MutableLiveData<Int>()
+    val upComingProgressBar = MutableLiveData<Boolean>()
     val popularList = MutableLiveData<PopularMovies>()
     val genres = MutableLiveData<List<GenresValues>>()
 
     init {
+        upComingProgressBar.value = true
         fetchPopularMovies()
         fetchUpcomingMovies()
         fetchGenres()
     }
 
     private fun fetchUpcomingMovies() {
-        upComingProgressBar.value = View.GONE
         val upcomingMovies: Observable<UpcomingMovies> = upcomingMoviesService.getUpcomingMovies()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -35,7 +34,7 @@ class MoviesViewModel : ViewModel() {
         upcomingMovies.subscribe(
             {
                 upcomingMoviesList.value = it
-                upComingProgressBar.value = 0
+                upComingProgressBar.value = false
             }, {
                 Log.i("TAG", "fetchUpcomingMovies: $it")
             }

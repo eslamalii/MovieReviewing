@@ -10,7 +10,7 @@ data class LatestSeries(
 
     @SerializedName("backdrop_path") var backdropPath : String,
     @SerializedName("created_by") var createdBy : List<CreatedBy>,
-    @SerializedName("episode_run_time") var episodeRunTime : List<String>,
+    @SerializedName("episode_run_time") var episodeRunTime : List<Int>,
     @SerializedName("first_air_date") var firstAirDate : String,
     @SerializedName("genres") var genres : List<Genres>,
     @SerializedName("homepage") var homepage : String,
@@ -28,7 +28,7 @@ data class LatestSeries(
     @SerializedName("original_language") var originalLanguage : String,
     @SerializedName("original_name") var originalName : String,
     @SerializedName("overview") var overview : String,
-    @SerializedName("popularity") var popularity : Int,
+    @SerializedName("popularity") var popularity : Double,
     @SerializedName("poster_path") var posterPath : String,
     @SerializedName("production_companies") var productionCompanies : List<ProductionCompanies>,
     @SerializedName("production_countries") var productionCountries : List<ProductionCountries>,
@@ -39,6 +39,8 @@ data class LatestSeries(
     @SerializedName("type") var type : String,
     @SerializedName("vote_average") var voteAverage : Int,
     @SerializedName("vote_count") var voteCount : Int
+
+
 ) {
     fun getBackPath(): String {
         return Constants.IMAGE_URL + backdropPath

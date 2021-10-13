@@ -16,18 +16,18 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class LatestSeriesViewModel : ViewModel() {
     private val latestSeriesService = SeriesService()
     val latestSeriesList = MutableLiveData<LatestSeries?>()
-    val progressBar = MutableLiveData<Int>()
+    val progressBar = MutableLiveData<Boolean>()
     val tvShows = MutableLiveData<TvShows>()
     val genres = MutableLiveData<List<GenresValues>>()
 
     init {
+        progressBar.value = true
         fetchLatestSeries()
         fetchTvShows()
         fetchGenres()
     }
 
     private fun fetchLatestSeries() {
-        progressBar.value = 8
         val latestSeries: Observable<LatestSeries> = latestSeriesService.getLatestSeries()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -35,7 +35,7 @@ class LatestSeriesViewModel : ViewModel() {
         latestSeries.subscribe(
             {
                 latestSeriesList.value = it
-                progressBar.value = 0
+                progressBar.value = false
             },
             {
                 Log.i("TAG", "fetchLatestSeries: $it")

@@ -37,12 +37,12 @@ class MoviesFrag : Fragment() {
 
         viewModel.upComingProgressBar.observe(this, {
             when (it) {
-                8 -> {
+                true -> {
                     binding.upcomingMoviesLO.visibility = View.GONE
-                    binding.progressBarLO.root.visibility = it
+                    binding.progressBarLO.root.visibility = View.VISIBLE
                 }
-                0 -> {
-                    binding.upcomingMoviesLO.visibility = it
+                false -> {
+                    binding.upcomingMoviesLO.visibility = View.VISIBLE
                     binding.progressBarLO.root.visibility = View.GONE
                 }
             }

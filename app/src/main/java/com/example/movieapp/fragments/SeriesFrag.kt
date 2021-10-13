@@ -35,12 +35,12 @@ class SeriesFrag : Fragment() {
 
         viewModel.progressBar.observe(this, {
             when (it) {
-                8 -> {
+                true -> {
                     binding.upcomingSeriesLO.visibility = View.GONE
-                    binding.progressBarLO.root.visibility = it
+                    binding.progressBarLO.root.visibility = View.VISIBLE
                 }
-                0 -> {
-                    binding.upcomingSeriesLO.visibility = it
+                false -> {
+                    binding.upcomingSeriesLO.visibility = View.VISIBLE
                     binding.progressBarLO.root.visibility = View.GONE
                 }
             }
