@@ -2,30 +2,36 @@ package com.example.movieapp.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.bumptech.glide.Glide
+import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentSeriesBinding
 import com.example.movieapp.model.series.genres.GenresValues
+import com.example.movieapp.model.series.tvShows.Results
 import com.example.movieapp.model.series.tvShows.TvShows
 import com.example.movieapp.recyclerViews.GenresRecyclerView
 import com.example.movieapp.recyclerViews.TrendingRecyclerView
 import com.example.movieapp.viewmodel.series.LatestSeriesViewModel
 
 
-class SeriesFrag : Fragment() {
+class SeriesFrag : Fragment(), TrendingRecyclerView.OnItemCLickListener {
 
     private lateinit var viewModel: LatestSeriesViewModel
     private var _binding: FragmentSeriesBinding? = null
     private lateinit var adapter: GenresRecyclerView
-    lateinit var trendingView: TrendingRecyclerView
-    lateinit var snap: SnapHelper
+    private lateinit var trendingView: TrendingRecyclerView
+    private lateinit var snap: SnapHelper
 
     private val binding get() = _binding!!
 
@@ -90,8 +96,12 @@ class SeriesFrag : Fragment() {
         binding.trendingRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         snap.attachToRecyclerView(binding.trendingRecyclerView)
-        trendingView = TrendingRecyclerView(tvShows, context)
+        trendingView = TrendingRecyclerView(tvShows, context, this)
         binding.trendingRecyclerView.adapter = trendingView
+    }
+
+    override fun onItemClicked(position: Results) {
+        findNavController().navigate(R.id.screenDetailsFrag)
     }
 
 }

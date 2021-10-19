@@ -30,16 +30,19 @@
 
     </com.google.android.material.tabs.TabLayout>
 
-
-    <!--    <include-->
-    <!--        android:id="@+id/toolBarTabs"-->
-    <!--        layout="@layout/custom_tabs" />-->
-
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/new_nav" />
 
 </LinearLayout>

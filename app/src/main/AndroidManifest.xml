@@ -12,11 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieApp">
         <activity
+            android:name=".kosomdaapp"
+            android:exported="false"
+            android:label="@string/title_activity_kosomdaapp"
+            android:theme="@style/Theme.MovieApp.NoActionBar" />
+        <activity
             android:name=".TabMain"
             android:exported="true"
             android:theme="@style/Theme.MovieApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

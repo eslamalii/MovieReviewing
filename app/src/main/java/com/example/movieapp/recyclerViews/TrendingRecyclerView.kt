@@ -13,7 +13,11 @@ import com.example.movieapp.model.series.tvShows.Results
 import com.example.movieapp.model.series.tvShows.TvShows
 import com.example.movieapp.util.GenreSeries
 
-class TrendingRecyclerView(private val cells: TvShows, private var context: Context) :
+class TrendingRecyclerView(
+    private val cells: TvShows,
+    private var context: Context,
+    private val listener: OnItemCLickListener
+) :
     RecyclerView.Adapter<TrendingRecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -42,9 +46,26 @@ class TrendingRecyclerView(private val cells: TvShows, private var context: Cont
         return cells.results.size
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         var image: ImageView = view.findViewById(R.id.posterHol)
         val genre: TextView = view.findViewById(R.id.genreHol)
         var rate: TextView = view.findViewById(R.id.rateHol)
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+//            val position = adapterPosition
+//            if (position != RecyclerView.NO_POSITION) {
+//                listener.onItemClicked(cells.results[position])
+//            }
+        }
+
+
+    }
+
+    interface OnItemCLickListener {
+        fun onItemClicked(position: Results)
     }
 }

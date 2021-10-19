@@ -2,6 +2,7 @@ package com.example.movieapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import com.example.movieapp.databinding.ActivityTabMainBinding
 import com.example.movieapp.ui.main.SectionsPagerAdapter
 import com.example.movieapp.ui.main.TAB_TITLES
@@ -16,6 +17,8 @@ class TabMain : AppCompatActivity() {
 
         binding = ActivityTabMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
 
         val sectionsPagerAdapter = SectionsPagerAdapter(this)

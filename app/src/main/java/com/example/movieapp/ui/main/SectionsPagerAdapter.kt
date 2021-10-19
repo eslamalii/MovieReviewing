@@ -8,7 +8,7 @@ import com.example.movieapp.fragments.MyListFrag
 import com.example.movieapp.R
 import com.example.movieapp.fragments.SeriesFrag
 
-public val TAB_TITLES = arrayOf(
+val TAB_TITLES = arrayOf(
     R.string.tab_text_1,
     R.string.tab_text_2,
     R.string.tab_text_3
