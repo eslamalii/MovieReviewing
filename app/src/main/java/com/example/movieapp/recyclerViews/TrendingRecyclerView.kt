@@ -56,10 +56,10 @@ class TrendingRecyclerView(
         }
 
         override fun onClick(p0: View?) {
-//            val position = adapterPosition
-//            if (position != RecyclerView.NO_POSITION) {
-//                listener.onItemClicked(cells.results[position])
-//            }
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClicked(cells.results[position])
+            }
         }
 
 

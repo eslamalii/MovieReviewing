@@ -15,4 +15,14 @@
         android:name="com.example.movieapp.ScreenDetailsFrag"
         android:label="fragment_screen_details"
         tools:layout="@layout/fragment_screen_details" />
+    <fragment
+        android:id="@+id/myListFrag"
+        android:name="com.example.movieapp.fragments.MyListFrag"
+        android:label="fragment_my_list"
+        tools:layout="@layout/fragment_my_list" />
+    <fragment
+        android:id="@+id/moviesFrag"
+        android:name="com.example.movieapp.fragments.MoviesFrag"
+        android:label="fragment_upcoming_movies"
+        tools:layout="@layout/fragment_upcoming_movies" />
 </navigation>
