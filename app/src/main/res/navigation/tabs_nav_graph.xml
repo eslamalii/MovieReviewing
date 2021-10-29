@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tabs_nav_graph"
+    app:startDestination="@id/itemTabsFragment">
+    <fragment
+        android:id="@+id/itemTabsFragment"
+        android:name="com.example.movieapp.ItemTabsFragment"
+        android:label="ItemTabsFragment">
+        <action
+            android:id="@+id/action_itemTabsFragment_to_screenDetailsFrag"
+            app:destination="@id/screenDetailsFrag"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/screenDetailsFrag"
+        android:name="com.example.movieapp.ScreenDetailsFrag"
+        android:label="fragment_screen_details"
+        tools:layout="@layout/fragment_screen_details" />
+    <fragment
+        android:id="@+id/seriesFrag"
+        android:name="com.example.movieapp.fragments.SeriesFrag"
+        android:label="fragment_series"
+        tools:layout="@layout/fragment_series" />
+    <fragment
+        android:id="@+id/moviesFrag"
+        android:name="com.example.movieapp.fragments.MoviesFrag"
+        android:label="fragment_upcoming_movies"
+        tools:layout="@layout/fragment_upcoming_movies" />
+</navigation>
