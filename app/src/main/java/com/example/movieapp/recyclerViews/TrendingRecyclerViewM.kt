@@ -15,7 +15,8 @@ import com.example.movieapp.util.GenreMovies
 
 class TrendingRecyclerViewM(
     private val cells: PopularMovies,
-    private var context: Context
+    private var context: Context,
+    private val listener: OnItemClickListener
 ) :
     RecyclerView.Adapter<TrendingRecyclerViewM.ViewHolder>() {
 
@@ -45,9 +46,24 @@ class TrendingRecyclerViewM(
         return cells.results.size
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         var image: ImageView = view.findViewById(R.id.posterHol)
         val genre: TextView = view.findViewById(R.id.genreHol)
         var rate: TextView = view.findViewById(R.id.rateHol)
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val p = adapterPosition
+            if (p != RecyclerView.NO_POSITION) {
+                listener.onItemClicked(cells.results[p].id)
+            }
+        }
+    }
+
+    interface OnItemClickListener {
+        fun onItemClicked(position: Int)
     }
 }

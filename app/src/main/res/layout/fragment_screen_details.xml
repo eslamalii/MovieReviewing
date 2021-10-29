@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_Mo"
     tools:context=".ScreenDetailsFrag">
 
-    <include
-        android:id="@+id/progressBarLO"
-        layout="@layout/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/backdrop_pathHol"
@@ -24,23 +20,45 @@
             android:layout_height="240dp"
             android:contentDescription="@string/contentDescription"
             android:scaleType="centerCrop"
-            android:src="@drawable/dddddddd" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_View_Movie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:elevation="8dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/backdrop_pathHol"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backdrop_pathHol">
+
+            <ImageView
+                android:id="@+id/posterHol"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:contentDescription="@string/contentDescription"
+                android:scaleType="centerCrop" />
+
+        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:id="@+id/details"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="28dp"
             android:orientation="horizontal"
-            android:paddingVertical="16dp">
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/card_View_Movie"
+            app:layout_constraintTop_toBottomOf="@+id/backdrop_pathHol">
 
             <TextView
                 android:id="@+id/genreHol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="4dp"
-                android:autoSizeMaxTextSize="20sp"
-                android:autoSizeMinTextSize="5sp"
                 android:autoSizeTextType="uniform"
                 android:background="@drawable/gradient_txt"
                 android:textColor="@color/white"
@@ -95,13 +113,15 @@
 
         <TextView
             android:id="@+id/nameHol"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="28dp"
             android:fontFamily="@font/roboto_medium"
+            android:paddingHorizontal="8dp"
             android:textColor="@color/white"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/card_View_Movie"
+            app:layout_constraintTop_toBottomOf="@+id/details" />
 
         <TextView
             android:id="@+id/storyHol"
@@ -109,10 +129,21 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="28dp"
             android:fontFamily="@font/roboto_regular"
+            android:paddingVertical="8dp"
             android:textColor="@color/storyText"
-            android:textSize="12sp" />
+            android:textSize="12sp"
+            app:layout_constraintTop_toBottomOf="@+id/card_View_Movie" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.example.movieapp.view.OverlapLoadingView
+        android:id="@+id/loadingView"
+        android:layout_width="0dp"
+        android:layout_height="160dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
-</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

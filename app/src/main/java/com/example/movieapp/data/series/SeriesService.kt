@@ -1,7 +1,6 @@
 package com.example.movieapp.data.series
 
-import com.example.movieapp.model.series.genres.Genres
-import com.example.movieapp.model.series.latestSeries.LatestSeries
+import com.example.movieapp.model.series.latestSeries.SeriesModel
 import com.example.movieapp.model.series.tvShows.TvShows
 import com.example.movieapp.util.Constants
 import hu.akarnokd.rxjava3.retrofit.RxJava3CallAdapterFactory
@@ -21,11 +20,15 @@ class SeriesService {
         .create(SeriesApi::class.java)
 
 
-    fun getLatestSeries(): Observable<LatestSeries> {
+    fun getLatestSeries(): Observable<SeriesModel> {
         return api.getLatestSeries(Constants.API_ID, "en-US")
     }
 
     fun getTvShows(): Observable<TvShows> {
         return api.getTvShows(Constants.API_ID, "en_US", "popularity.desc", "America/New_York")
+    }
+
+    fun getTvDetails(id: Int): Observable<SeriesModel> {
+        return api.getSeriesDetails(id, Constants.API_ID, "en_US")
     }
 }

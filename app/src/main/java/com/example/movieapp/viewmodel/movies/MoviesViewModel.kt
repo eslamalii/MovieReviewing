@@ -3,7 +3,7 @@ package com.example.movieapp.viewmodel.movies
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.movieapp.data.movies.UpcomingService
+import com.example.movieapp.data.movies.MoviesServices
 import com.example.movieapp.model.movies.popularMovies.PopularMovies
 import com.example.movieapp.model.movies.upcomingMovies.UpcomingMovies
 import com.example.movieapp.model.series.genres.GenresValues
@@ -13,7 +13,7 @@ import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class MoviesViewModel : ViewModel() {
-    private val upcomingMoviesService = UpcomingService()
+    private val upcomingMoviesService = MoviesServices()
     val upcomingMoviesList = MutableLiveData<UpcomingMovies?>()
     val upComingProgressBar = MutableLiveData<Boolean>()
     val popularList = MutableLiveData<PopularMovies>()

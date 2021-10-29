@@ -7,26 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.SnapHelper
 import com.bumptech.glide.Glide
+import com.example.movieapp.R
 import com.example.movieapp.databinding.FragmentUpcomingMoviesBinding
 import com.example.movieapp.model.movies.popularMovies.PopularMovies
 import com.example.movieapp.model.series.genres.GenresValues
 import com.example.movieapp.recyclerViews.GenresRecyclerView
 import com.example.movieapp.recyclerViews.TrendingRecyclerViewM
+import com.example.movieapp.recyclerViews.TrendingRecyclerViewM.OnItemClickListener
 import com.example.movieapp.viewmodel.movies.MoviesViewModel
 import kotlin.random.Random
 
 
-class MoviesFrag : Fragment() {
+class MoviesFrag : Fragment(), OnItemClickListener {
 
     private lateinit var viewModel: MoviesViewModel
     private var _binding: FragmentUpcomingMoviesBinding? = null
-    lateinit var adapter: GenresRecyclerView
-    lateinit var snap: SnapHelper
-    lateinit var popView: TrendingRecyclerViewM
+    private lateinit var adapter: GenresRecyclerView
+    private lateinit var snap: SnapHelper
+    private lateinit var popView: TrendingRecyclerViewM
 
 
     private val binding get() = _binding!!
@@ -99,8 +102,12 @@ class MoviesFrag : Fragment() {
         binding.trendingRecyclerView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         snap.attachToRecyclerView(binding.trendingRecyclerView)
-        popView = TrendingRecyclerViewM(list, context)
+        popView = TrendingRecyclerViewM(list, context, this)
         binding.trendingRecyclerView.adapter = popView
+    }
+
+    override fun onItemClicked(position: Int) {
+//        findNavController().navigate(R.id.screenDetailsFrag)
     }
 
 }

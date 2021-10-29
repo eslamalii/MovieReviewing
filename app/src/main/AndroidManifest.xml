@@ -11,15 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieApp">
-        <activity
-            android:name=".kosomdaapp"
-            android:exported="false"
-            android:label="@string/title_activity_kosomdaapp"
-            android:theme="@style/Theme.MovieApp.NoActionBar" />
+
         <activity
             android:name=".TabMain"
-            android:exported="true"
-            android:theme="@style/Theme.MovieApp">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
