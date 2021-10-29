@@ -1,10 +1,10 @@
 package com.example.movieapp.data.series
 
-import com.example.movieapp.model.series.genres.Genres
-import com.example.movieapp.model.series.latestSeries.LatestSeries
+import com.example.movieapp.model.series.latestSeries.SeriesModel
 import com.example.movieapp.model.series.tvShows.TvShows
 import io.reactivex.rxjava3.core.Observable
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface SeriesApi {
@@ -13,7 +13,7 @@ interface SeriesApi {
     fun getLatestSeries(
         @Query("api_key") api: String,
         @Query("language") language: String
-    ): Observable<LatestSeries>
+    ): Observable<SeriesModel>
 
     @GET("discover/tv")
     fun getTvShows(
@@ -21,6 +21,13 @@ interface SeriesApi {
         @Query("language") language: String,
         @Query("sort_by") sort_by: String,
         @Query("timezone") timeZone: String,
-    ) : Observable<TvShows>
+    ): Observable<TvShows>
+
+    @GET("tv/{tv_id}")
+    fun getSeriesDetails(
+        @Path("tv_id") id: Int,
+        @Query("api_key") api: String,
+        @Query("language") language: String
+    ): Observable<SeriesModel>
 
 }

@@ -28,4 +28,6 @@ class SectionsPagerAdapter(fm: FragmentActivity) : FragmentStateAdapter(fm) {
         }
     }
 
+
+
 }

@@ -5,8 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
@@ -29,6 +31,7 @@ class SeriesFrag : Fragment(), TrendingRecyclerView.OnItemCLickListener {
     private lateinit var adapter: GenresRecyclerView
     private lateinit var trendingView: TrendingRecyclerView
     private lateinit var snap: SnapHelper
+    lateinit var navController: NavController
 
     private val binding get() = _binding!!
 
@@ -73,6 +76,7 @@ class SeriesFrag : Fragment(), TrendingRecyclerView.OnItemCLickListener {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSeriesBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -98,7 +102,9 @@ class SeriesFrag : Fragment(), TrendingRecyclerView.OnItemCLickListener {
     }
 
     override fun onItemClicked(position: Results) {
-
-        findNavController().navigate(R.id.screenDetailsFrag)
+        findNavController().navigate(
+            R.id.action_itemTabsFragment_to_screenDetailsFrag,
+            bundleOf("id" to position.id)
+        )
     }
 }

@@ -3,6 +3,13 @@ package com.example.movieapp.model.movies.popularMovies
 import com.example.movieapp.util.Constants
 import com.google.gson.annotations.SerializedName
 
+data class PopularMovies(
+    @SerializedName("page") var page: Int,
+    @SerializedName("results") var results: List<Results>,
+    @SerializedName("total_pages") var totalPages: Int,
+    @SerializedName("total_results") var totalResults: Int
+)
+
 data class Results(
 
     @SerializedName("adult") var adult: Boolean,
@@ -23,5 +30,9 @@ data class Results(
 ) {
     fun getImageUrl(): String {
         return Constants.IMAGE_URL + posterPath
+    }
+
+    fun getBackdropUrl(): String {
+        return Constants.IMAGE_URL + backdropPath
     }
 }

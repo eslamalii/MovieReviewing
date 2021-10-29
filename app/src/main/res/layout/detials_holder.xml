@@ -5,9 +5,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:layout_marginHorizontal="32dp"
     android:background="@android:color/transparent"
-    android:orientation="vertical"
-    android:paddingHorizontal="32dp">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_View_MovieHol"
@@ -22,6 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="220dp"
             android:background="@drawable/shape_rounded"
+            android:scaleType="fitCenter"
             tools:ignore="ContentDescription" />
 
     </androidx.cardview.widget.CardView>

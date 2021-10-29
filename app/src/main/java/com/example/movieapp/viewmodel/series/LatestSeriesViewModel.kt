@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.movieapp.data.series.SeriesService
 import com.example.movieapp.model.series.genres.GenresValues
-import com.example.movieapp.model.series.latestSeries.LatestSeries
+import com.example.movieapp.model.series.latestSeries.SeriesModel
 import com.example.movieapp.model.series.tvShows.TvShows
 import com.example.movieapp.util.GenreSeries
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -15,7 +15,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 
 class LatestSeriesViewModel : ViewModel() {
     private val latestSeriesService = SeriesService()
-    val latestSeriesList = MutableLiveData<LatestSeries?>()
+    val latestSeriesList = MutableLiveData<SeriesModel?>()
     val progressBar = MutableLiveData<Boolean>()
     val tvShows = MutableLiveData<TvShows>()
     val genres = MutableLiveData<List<GenresValues>>()
@@ -28,7 +28,7 @@ class LatestSeriesViewModel : ViewModel() {
     }
 
     private fun fetchLatestSeries() {
-        val latestSeries: Observable<LatestSeries> = latestSeriesService.getLatestSeries()
+        val latestSeries: Observable<SeriesModel> = latestSeriesService.getLatestSeries()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 
